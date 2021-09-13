@@ -7,7 +7,7 @@ const mongoSan = require('mongo-sanitize');
 
 
 module.exports = (req, res, next) => {
-    var sauce = JSON.parse(req.body.sauce); 
+    let sauce = req.file ? JSON.parse(req.body.sauce) : req.body;
     sauce.name = escapeHTML(sauce.name); 
     sauce.manufacturer = escapeHTML(sauce.manufacturer);
     sauce.description = escapeHTML(sauce.description);
