@@ -25,7 +25,7 @@ exports.modifySauce = (req, res, next) => {
             ...JSON.parse(req.body.sauce), 
             imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
         } : { ...req.body };
-        
+
     if (sauceObject.userId != req.body.decodedId){
         return res.status(403).json({error : "403: unauthorized request"})
     }
@@ -42,7 +42,7 @@ exports.deleteSauce = (req, res, next) => {
                 return res.status(403).json({error :"utilisateur non autorisé"});
             }
 
-            const filename = sauce.imageUrl.split('/images/')[1];
+            const filename = sauce.imageUrl.split('/images/')[1]; 
             fs.unlink(`images/${filename}`, () => {
                 Sauce.deleteOne({ _id: req.params.id})
                     .then(() => res.status(200).json({message: 'Sauce supprimée'}))
