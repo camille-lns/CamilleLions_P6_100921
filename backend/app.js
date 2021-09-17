@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
 const helmet = require('helmet');
-const mongoSanitize = require('express-mongo-sanitize');
+
 
 const stuffRoutes = require('./routes/sauce');
 const userRoutes = require('./routes/user');
